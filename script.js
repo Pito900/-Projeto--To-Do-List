@@ -26,6 +26,7 @@ function bkTaskColor () {
                 nItem.classList.add("greyColor") // colocando selected em quem n tinha selected
                 }
             })
+
 }
 
 bkTaskColor ()
@@ -43,6 +44,7 @@ function riscar() {
 }
 
 riscar()
+
 
 function clear () {
     let biloto = document.createElement("button")
@@ -76,6 +78,22 @@ function clearCompleted(){
 
 clearCompleted()
 
+
+function removeSec(){
+    const rSele= document.createElement("button");
+    rSele.id = "remover-selecionado";
+    rSele.innerText = "Deleta o Selecionado"
+    document.querySelector("#utilidades").appendChild(rSele)
+    document.querySelector("#remover-selecionado").addEventListener("click", function(){
+        const selected = document.querySelector(".greyColor")
+        const listaPai = document.querySelector("#lista-tarefas")
+        if(selected.getAttribute("class").includes(".greyColor") != null){
+            listaPai.removeChild(selected)
+        }
+    })
+}
+removeSec()
+
 function saveTask() {
     const savePoint =  document.createElement("button")
     savePoint.id = "salvar-tarefas";
@@ -97,7 +115,7 @@ function moverSelected(){
     const pCima = document.createElement("button")
     pCima.id ="mover-cima"
     pCima.innerText = "Subir"
-    document.querySelector("#utilidades").appendChild(pCima)
+    document.querySelector("#upDown").appendChild(pCima)
 //Agora Vou fazer um mecanismo para reorganizar a lista (mudar de lugar os itens)
     document.querySelector("#mover-cima").addEventListener("click", function(){
         const listaPai = document.querySelector("#lista-tarefas")
@@ -113,7 +131,7 @@ function moverSelected(){
     const pBaixo= document.createElement("button");
     pBaixo.id = "mover-baixo";
     pBaixo.innerText = "Descer"
-    document.querySelector("#utilidades").appendChild(pBaixo)
+    document.querySelector("#upDown").appendChild(pBaixo)
     //Agora Vou fazer um mecanismo para reorganizar a lista (mudar de lugar os itens)
     document.querySelector("#mover-baixo").addEventListener("click", function(){
         const listaPai = document.querySelector("#lista-tarefas")
@@ -129,18 +147,3 @@ function moverSelected(){
 }
 
 moverSelected()
-
-function removeSec(){
-    const rSele= document.createElement("button");
-    rSele.id = "remover-selecionado";
-    rSele.innerText = "Deleta o Selecionado"
-    document.querySelector("#utilidades").appendChild(rSele)
-    document.querySelector("#remover-selecionado").addEventListener("click", function(){
-        const selected = document.querySelector(".greyColor")
-        const listaPai = document.querySelector("#lista-tarefas")
-        if(selected.getAttribute("class").includes(".greyColor") != null){
-            listaPai.removeChild(selected)
-        }
-    })
-}
-removeSec()
