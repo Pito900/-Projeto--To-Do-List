@@ -17,13 +17,15 @@ addTask()
 
 function bkTaskColor () {
             document.querySelector("#lista-tarefas").addEventListener("click", function(event){
-                let nItem = event.target //Aqui estou pegando qualquer target dentro da lista de tarefas
-                let eItem = document.querySelector(".greyColor") //aqui estou pegando o primeiro grey color
-                if (eItem === null){ //se n tivermos nenhum grey color temos q colocar grey color
-                    nItem.classList.add("greyColor")
-                } else { //dps do primeiro clique o modelo vai seguir pelo else..removendo o greycolor e colocando
-                eItem.classList.remove("greyColor") //removendo selected de quem tem selected
-                nItem.classList.add("greyColor") // colocando selected em quem n tinha selected
+                let itemClicado = event.target //Aqui estou pegando qualquer target dentro da lista de tarefas
+                let itemAnterior = document.querySelector(".greyColor") //aqui estou pegando o primeiro grey color
+                if (itemAnterior === null){ //se n tivermos nenhum grey color temos q colocar grey color
+                    itemClicado.classList.add("greyColor")
+                } else if (itemClicado.classList.contains("greyColor")) {//Coloquei isso para poder retirar a seleção de um item
+                    itemClicado.classList.remove("greyColor")    
+                }else { //dps do primeiro clique o modelo vai seguir pelo else..removendo o greycolor e colocando
+                itemAnterior.classList.remove("greyColor") //removendo selected de quem tem selected
+                itemClicado.classList.add("greyColor") // colocando selected em quem n tinha selected
                 }
             })
 
@@ -93,6 +95,7 @@ function removeSec(){
     })
 }
 removeSec()
+
 
 function saveTask() {
     const savePoint =  document.createElement("button")
